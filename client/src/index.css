@@ -1,3 +1,16 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+input[type="email"], input[type="password"], input[type="text"] {
+    @apply w-full p-3 mx-5 my-2 border rounded-lg focus:outline-none
+}
+
+button{ 
+    @apply bg-gray-500
+}
+
+button.primary {
+    background-color: #F53850;
+    @apply bg-primary p-2 w-full text-white rounded-2xl
+}

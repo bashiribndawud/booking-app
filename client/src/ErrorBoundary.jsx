@@ -4,6 +4,7 @@ export class ErrorBoundary extends Component {
     constructor(props){
         super(props);
         this.state = {hashError: false}
+        
     }
 
     componentDidCatch(error, info){
