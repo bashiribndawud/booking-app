@@ -66,7 +66,7 @@ const Header = () => {
             d="M3.75 5.25h16.5m-16.5 4.5h16.5m-16.5 4.5h16.5m-16.5 4.5h16.5"
           />
         </svg>
-        <Link to={"/login"} className="bg-gray-400 p-1 rounded-full text-white">
+        <Link to={user? '/account/:subpage?' :"/login"} className="bg-gray-400 p-1 rounded-full text-white">
           <svg
             xmlns="http://www.w3.org/2000/svg"
             viewBox="0 0 24 24"

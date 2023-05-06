@@ -21,7 +21,6 @@ const Register = () => {
     validateOnBlur: false,
     validateOnChange: false,
     onSubmit: async (values) => {
-      console.log("Register");
         const registerPromise = registerUser(values);
         toast.promise(registerPromise, {
           loading: "Registering...",
@@ -33,15 +32,15 @@ const Register = () => {
             .catch(errorMessage => toast.error(errorMessage))
     },
   });
-  if(token){
-    return <Navigate to={'/indexPage'} />
-  }
+  // if(token){
+  //   return <Navigate to={'/indexPage'} />
+  // }
   return (
     <>
       <div className="mt-4">
         <Toaster position="top-right" reverseOrder="false"></Toaster>
         <h1 className="text-4xl text-center font-semibold text-gray-500">
-          Login
+          Register
         </h1>
         <form
           className="max-w-2xl mx-auto border flex flex-col items-center p-5 mt-4"
@@ -72,7 +71,7 @@ const Register = () => {
             value={formik.values.password}
           />
           <button type="submit" className="primary">
-            Signin
+            Signup
           </button>
           <p className="text-gray-500">
             Already have an account?{" "}

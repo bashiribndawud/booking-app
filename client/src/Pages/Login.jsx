@@ -33,7 +33,6 @@ const Login = () => {
       const loginPromise = loginUser(values);
       toast.promise(loginPromise, {
         loading: "Logging In",
-        success: <b>User Logged In Successfully</b>,
         error: <b>Failed to log user in</b>,
       });
 
@@ -52,9 +51,9 @@ const Login = () => {
         .catch((errorMessage) => toast.error(errorMessage));
     },
   });
-  if(token){
-    return <Navigate to={'/indexPage'} />;
-  }
+  // if(token){
+  //   return <Navigate to={'/indexPage'} />;
+  // }
   return (
     <>
       <div className="mt-4">

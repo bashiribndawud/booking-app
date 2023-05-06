@@ -2,7 +2,7 @@ import axios from "axios";
 
 export const registerUser = async (credentials) => {
   try {
-    const response = await axios.post("auth/register", credentials, {
+    const response = await axios.post("/register", credentials, {
       headers: { "Content-Type": "application/json" },
     });
     return Promise.resolve();
@@ -14,7 +14,7 @@ export const registerUser = async (credentials) => {
 
 export const loginUser = async (credentials) => {
     try {
-        const response = await axios.post("auth/login", credentials,  {
+        const response = await axios.post("/login", credentials,  {
           headers: { "Content-Type": "application/json" },
         });
         return Promise.resolve(response)
@@ -23,4 +23,19 @@ export const loginUser = async (credentials) => {
         return Promise.reject(errorMessage)
     }
 
+}
+
+export const addNewPlace = async (newData) => {
+  const token = localStorage.getItem("token");
+  try {
+      const { status } = await axios.post("/newplace", newData, {
+        headers: {
+          "Content-Type": "application/json",
+          Authorization: `bearer ${token}`,
+        },
+      });
+      return Promise.resolve(status)
+  } catch (error) {
+    return Promise.reject(error.message)
+  }
 }

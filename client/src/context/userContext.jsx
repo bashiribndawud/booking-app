@@ -1,4 +1,4 @@
-import { createContext, useReducer, useContext, useEffect } from "react";
+import { createContext, useReducer, useContext, useEffect, useState } from "react";
 import axios from "axios";
 
 const UserContext = createContext();
@@ -24,16 +24,22 @@ function reducerFn(state, action) {
 
 // HOC
 export const UserContextProvider = ({ children }) => {
+  const [ready, setReady] = useState(false)
   const token = localStorage.getItem("token");
   const [state, dispatch] = useReducer(reducerFn, initialState);
-  useEffect(async () => {
-    if (!state.user) {
-      const {data} = await axios.get("auth/profile", { params: { token } });
-      dispatch({ type: "SET_USER", user: data });
+  useEffect(() => {
+    async function getUserProfile(){
+      if (!state.user) {
+        const {data} = await axios.get("/profile", { params: { token } });
+        dispatch({ type: "SET_USER", user: data });
+        setReady(true)
+      }
     }
+
+    getUserProfile()
   }, []);
   return (
-    <UserContext.Provider value={{ state, dispatch }}>
+    <UserContext.Provider value={{ state, dispatch, ready }}>
       {children}
     </UserContext.Provider>
   );

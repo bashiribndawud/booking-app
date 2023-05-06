@@ -19,3 +19,25 @@ export const RegisterValidate = (values) => {
 
     return errors
 }
+
+
+export const ValidateNewPlaces = (values) => {
+ const errors = {} 
+ if(!values.title){
+    errors.title = toast.error('Title Required')
+ }
+ if(!values.address) {
+    errors.address = toast.error("Address Required");
+ }
+ if(!values.photolink){
+    errors.photolink = toast.error("Photo Link Required");
+ }
+  if (!values.description) {
+    errors.description = toast.error("Description Required");
+  }
+  if(values.perk.length < 0) {
+    errors.perk = toast.error("Select a perk");
+  }
+  
+ return errors
+}
