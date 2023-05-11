@@ -5,7 +5,6 @@ const Perks = ({selected, onChange}) => {
         const {checked, name} = evt.target;
         if(checked){
             onChange([...selected, name])
-            console.log(selected)
         }else {
             onChange([...selected.filter(perk => perk !== name)])
         }
@@ -24,6 +23,7 @@ const Perks = ({selected, onChange}) => {
             name="Wifi"
             value={"Wifi"}
             onChange={handleSelectedPerks}
+            checked={selected.includes("Wifi")}
           />
           <svg
             xmlns="http://www.w3.org/2000/svg"
@@ -51,6 +51,7 @@ const Perks = ({selected, onChange}) => {
             name="Free parking spot"
             value={"Free parking spot"}
             onChange={handleSelectedPerks}
+            checked={selected.includes("Free parking spot")}
           />
           <svg
             xmlns="http://www.w3.org/2000/svg"
@@ -78,6 +79,7 @@ const Perks = ({selected, onChange}) => {
             name="TV"
             value={"TV"}
             onChange={handleSelectedPerks}
+            checked={selected.includes("TV")}
           />
           <svg
             xmlns="http://www.w3.org/2000/svg"
@@ -105,6 +107,7 @@ const Perks = ({selected, onChange}) => {
             name="Radio"
             value={"Radio"}
             onChange={handleSelectedPerks}
+            checked={selected.includes("Radio")}
           />
           <svg
             xmlns="http://www.w3.org/2000/svg"
@@ -132,6 +135,7 @@ const Perks = ({selected, onChange}) => {
             name="Pets"
             value={"Pets"}
             onChange={handleSelectedPerks}
+            checked={selected.includes("Pets")}
           />
           <svg
             xmlns="http://www.w3.org/2000/svg"
@@ -158,6 +162,7 @@ const Perks = ({selected, onChange}) => {
             name="Private Entrance"
             value={"Private Entrance"}
             onChange={handleSelectedPerks}
+            checked={selected.includes("Private Entrance")}
           />
           <svg
             xmlns="http://www.w3.org/2000/svg"

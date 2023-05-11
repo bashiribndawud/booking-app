@@ -2,19 +2,14 @@ import React from "react";
 import { useUserContext } from "../context/userContext";
 import { Navigate, Link, useParams, useLocation } from "react-router-dom";
 import Loader from "../components/Loader";
-import axios from "axios";
-import PlacesPage from "./PlacesPage";
 import AccountNav from "../components/AccountNav";
-import ProfilePage from "./ProfilePage";
-import BookingPage from "./BookingsPage";
-const Account = () => {
-  const { pathname } = useLocation();
-  const path = pathname.slice("/")[2];
+const ProfilePage = () => {
   const {
     state: { user },
     ready,
     dispatch,
   } = useUserContext();
+
   if (!ready) {
     return <Loader />;
   }
@@ -23,19 +18,23 @@ const Account = () => {
   }
   function handleLogOut() {
     dispatch({ type: "LOGOUT" });
-    localStorage.removeItem("token");
   }
   return (
     <div>
-      <AccountNav />
-
-      {path === "profile" && <ProfilePage />}
-
-      {path === "bookings" && <BookingPage />}
-
-      {path === "places" && <PlacesPage />}
+     <AccountNav />
+      <div className="mx-auto text-center max-w-lg">
+        <p className="my-3">
+          <span className="py-1 bg-green-500 text-white rounded">
+            Sign in with
+          </span>{" "}
+          {user.email}
+        </p>
+        <button type="button" className="primary" onClick={handleLogOut}>
+          Sign Out
+        </button>
+      </div>
     </div>
   );
 };
 
-export default Account;
+export default ProfilePage;

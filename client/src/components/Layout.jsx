@@ -7,7 +7,9 @@ const Layout = () => {
     <>
       <div className="flex flex-col">
         <Header />
-        <Outlet />
+        <div className="mx-8 my-4">
+          <Outlet />
+        </div>
       </div>
     </>
   );

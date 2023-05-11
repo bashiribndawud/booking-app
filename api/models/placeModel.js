@@ -9,9 +9,10 @@ const placeSchema = new mongoose.Schema(
     description: String,
     perks: [String],
     extraInfo: String,
-    checkIn: Number,
-    checkOut: Number,
-    maxGuests: Number,
+    checkin: Number,
+    checkout: Number,
+    maxGuest: Number,
+    price: Number,
   },
   { timestamps: true }
 );
